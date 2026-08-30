@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoshP Concept – Roofing & Carpentry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --ink: #141414;
+            --card: #1f1f1f;
+            --border: #2e2e2e;
+            --amber: #E07B00;
+            --amber-l: #f59320;
+            --stone: #F0EBE1;
+            --muted: #9a9287;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--ink);
+            color: var(--stone);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 5%;
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 0.02em;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--amber);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--stone);
+        }
+
+        .nav-cta {
+            background: var(--amber);
+            color: var(--ink) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--amber-l) !important;
+            color: var(--ink) !important;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 5% 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to right, rgba(20, 20, 20, 0.96) 45%, rgba(20, 20, 20, 0.5) 100%),
+                url('./img2.jpeg') center/cover no-repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 680px;
+            opacity: 0;
+            transform: translateY(32px);
+            animation: fadeUp 0.9s ease 0.2s forwards;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--amber);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--amber);
+            border-radius: 2px;
+        }
+
+        .hero-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3.2rem, 7vw, 5.5rem);
+            line-height: 1;
+            color: var(--white);
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .line-amber {
+            color: var(--amber);
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--amber);
+            color: var(--ink);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--amber-l);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            border: 1px solid var(--border);
+            color: var(--stone);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+            display: inline-block;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--muted);
+            color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .stat-num span {
+            color: var(--amber);
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 0.25rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 7rem 5%;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--amber);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--amber);
+        }
+
+        .section-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            line-height: 1.05;
+            color: var(--white);
+            letter-spacing: -0.01em;
+            max-width: 560px;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-body {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 520px;
+            line-height: 1.75;
+        }
+
+        /* ── SERVICES ── */
+        #services {
+            background: var(--ink);
+        }
+
+        .services-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: default;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .service-card:hover {
+            border-color: var(--amber);
+            transform: translateY(-3px);
+        }
+
+        .service-card.featured {
+            grid-row: span 2;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-card.featured .service-img {
+            height: 360px;
+        }
+
+        .service-body {
+            padding: 1.75rem;
+        }
+
+        .service-tag {
+            display: inline-block;
+            background: rgba(224, 123, 0, 0.15);
+            color: var(--amber);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            margin-bottom: 0.9rem;
+        }
+
+        .service-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .secondary-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        /* ── HOW IT WORKS ── */
+        #how {
+            background: var(--ink);
+            border-top: 1px solid var(--border);
+        }
+
+        .how-head {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .how-head .section-label {
+            justify-content: center;
+        }
+
+        .how-head .section-label::before {
+            display: none;
+        }
+
+        .how-head .section-title {
+            margin: 0 auto 1rem;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .how-head .section-body {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            position: relative;
+        }
+
+        .how-steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: calc(16.66% + 1rem);
+            right: calc(16.66% + 1rem);
+            height: 1px;
+            background: linear-gradient(to right, var(--amber), var(--border), var(--amber));
+        }
+
+        .how-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .how-step-num {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--ink);
+            border: 2px solid var(--amber);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--amber);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .how-step h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+
+        .how-step p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+            max-width: 220px;
+        }
+
+        /* ── WHY US ── */
+        #why {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .why-list {
+            list-style: none;
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.1rem;
+            align-items: flex-start;
+        }
+
+        .why-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(224, 123, 0, 0.12);
+            border: 1px solid rgba(224, 123, 0, 0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .why-text h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.01em;
+        }
+
+        .why-text p {
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .why-visual {
+            position: relative;
+        }
+
+        .why-visual img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .why-badge {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -1.5rem;
+            background: var(--amber);
+            color: var(--ink);
+            padding: 1.25rem 1.5rem;
+            border-radius: 6px;
+        }
+
+        .why-badge-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+
+        .why-badge-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        /* ── TESTIMONIALS ── */
+        #testimonials {
+            background: var(--ink);
+            border-top: 1px solid var(--border);
+        }
+
+        .testimonials-head {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .testimonials-head .section-label {
+            justify-content: center;
+        }
+
+        .testimonials-head .section-label::before {
+            display: none;
+        }
+
+        .testimonials-head .section-title {
+            margin: 0 auto 1rem;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .testimonial-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            transition: border-color 0.25s;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(224, 123, 0, 0.4);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .star {
+            color: var(--amber);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-quote {
+            font-size: 0.95rem;
+            color: var(--stone);
+            line-height: 1.75;
+            flex: 1;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            color: var(--amber);
+            line-height: 0;
+            vertical-align: -0.6rem;
+            margin-right: 0.2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(224, 123, 0, 0.2);
+            border: 1px solid rgba(224, 123, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--amber);
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .author-location {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 0.1rem;
+        }
+
+        /* ── GALLERY ── */
+        #gallery {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+
+        .gallery-head {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .gallery-head .section-label {
+            justify-content: center;
+        }
+
+        .gallery-head .section-label::before {
+            display: none;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 260px 260px;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 6px;
+            background: var(--card);
+            border: 1px solid var(--border);
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        /* ── FAQ ── */
+        #faq {
+            background: var(--ink);
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 5rem;
+            align-items: flex-start;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item.open {
+            border-color: rgba(224, 123, 0, 0.5);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: var(--card);
+            border: none;
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            text-align: left;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: #262626;
+        }
+
+        .faq-chevron {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--amber);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            background: var(--card);
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.4rem 1.25rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.7;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-channels {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .channel-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            background: var(--ink);
+            transition: border-color 0.2s, background 0.2s, transform 0.15s;
+        }
+
+        .channel-btn:hover {
+            border-color: var(--amber);
+            background: rgba(224, 123, 0, 0.07);
+            transform: translateX(4px);
+        }
+
+        .channel-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .channel-icon.whatsapp {
+            background: rgba(37, 211, 102, 0.15);
+        }
+
+        .channel-icon.phone {
+            background: rgba(224, 123, 0, 0.15);
+        }
+
+        .channel-info {
+            flex: 1;
+        }
+
+        .channel-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .channel-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-top: 0.1rem;
+        }
+
+        .channel-arrow {
+            color: var(--muted);
+            font-size: 1.2rem;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .channel-btn:hover .channel-arrow {
+            color: var(--amber);
+            transform: translateX(3px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: var(--ink);
+            border: 1px solid var(--border);
+            color: var(--stone);
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+            appearance: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9287' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.9rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--card);
+            color: var(--stone);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--amber);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #4a4540;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-submit {
+            background: var(--amber);
+            color: var(--ink);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            align-self: flex-start;
+        }
+
+        .form-submit:hover {
+            background: var(--amber-l);
+            transform: translateY(-1px);
+        }
+
+        /* ── FLOATING WHATSAPP ── */
+        .wa-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 200;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: var(--amber);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.from-left {
+            transform: translateX(-50px);
+        }
+
+        .reveal.from-right {
+            transform: translateX(50px);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.featured {
+                grid-row: auto;
+            }
+
+            .secondary-cards {
+                flex-direction: row;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .why-visual {
+                display: none;
+            }
+
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .how-steps {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .how-steps::before {
+                display: none;
+            }
+
+            .faq-wrap {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 5rem 5%;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 1;
+            }
+
+            .secondary-cards {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .reveal,
+            .hero-content {
+                transition: none;
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="./index.html" class="nav-logo">JoshP <span>Concept</span></a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Roofing &amp; Carpentry</div>
+            <h1 class="hero-title">
+                Built Overhead.<br>
+                <span class="line-amber">Crafted by Hand.</span>
+            </h1>
+            <p class="hero-sub">
+                We put roofs on houses that last decades, and build furniture that becomes part of the family. No
+                shortcuts, no sloppy finishes.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Get a free quote</a>
+                <a href="#services" class="btn-ghost">See our work</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-num">10<span>+</span></div>
+                    <div class="stat-label">Years in business</div>
+                </div>
+                <div>
+                    <div class="stat-num">300<span>+</span></div>
+                    <div class="stat-label">Roofs completed</div>
+                </div>
+                <div>
+                    <div class="stat-num">98<span>%</span></div>
+                    <div class="stat-label">Client satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="services-head reveal">
+            <div>
+                <div class="section-label">What we do</div>
+                <h2 class="section-title">Our Core Services</h2>
+            </div>
+            <p class="section-body" style="max-width:340px;">
+                Roofing is our backbone. Furniture is our craft. Both get the same level of care.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card featured reveal from-left">
+                <img class="service-img" src="./img2.jpeg" alt="Roofing installation on a residential building" />
+                <div class="service-body">
+                    <span class="service-tag">Primary service</span>
+                    <h3 class="service-name">Residential &amp; Commercial Roofing</h3>
+                    <p class="service-desc">From full roof installations to repairs and re-roofing, we work with iron
+                        sheets, long span, shingles, and concrete. Every job is inspected before we pack up.</p>
+                </div>
+            </div>
+
+            <div class="secondary-cards">
+                <div class="service-card reveal from-right reveal-delay-1">
+                    <img class="service-img" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80"
+                        alt="Custom furniture" />
+                    <div class="service-body">
+                        <span class="service-tag">Carpentry</span>
+                        <h3 class="service-name">Custom Furniture</h3>
+                        <p class="service-desc">Chairs, tables, wardrobes, shelving — built to spec and built to last.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-card reveal from-right reveal-delay-2">
+                    <img class="service-img" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80"
+                        alt="Roof maintenance and repairs" />
+                    <div class="service-body">
+                        <span class="service-tag">Maintenance</span>
+                        <h3 class="service-name">Roof Repairs &amp; Inspection</h3>
+                        <p class="service-desc">Leaks, rust, broken panels — we find the problem and fix it properly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+        <div class="how-head reveal">
+            <div class="section-label">The process</div>
+            <h2 class="section-title">How it works</h2>
+            <p class="section-body">Three steps from first contact to a finished job. No confusion, no surprises.</p>
+        </div>
+
+        <div class="how-steps">
+            <div class="how-step reveal reveal-delay-1">
+                <div class="how-step-num">1</div>
+                <h3>You reach out</h3>
+                <p>Call or WhatsApp us with your location and what you need. We respond same day, usually within the
+                    hour.</p>
+            </div>
+            <div class="how-step reveal reveal-delay-2">
+                <div class="how-step-num">2</div>
+                <h3>We inspect &amp; quote</h3>
+                <p>We visit the site, assess the work, and give you a clear written quote — materials, labour, timeline.
+                    No hidden costs.</p>
+            </div>
+            <div class="how-step reveal reveal-delay-3">
+                <div class="how-step-num">3</div>
+                <h3>We get to work</h3>
+                <p>Our crew shows up on the agreed date and finishes the job properly. You inspect before we leave.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why">
+        <div class="why-grid">
+            <div class="reveal from-left">
+                <div class="section-label">Why JoshP</div>
+                <h2 class="section-title">We show up. We finish. We do it right.</h2>
+                <p class="section-body">A lot of contractors disappear mid-job. That's not us. We give you a timeline
+                    upfront and we stick to it.</p>
+                <ul class="why-list">
+                    <li class="why-item">
+                        <div class="why-icon">🏗️</div>
+                        <div class="why-text">
+                            <h4>Experienced crew</h4>
+                            <p>Every team member has hands-on years in roofing and woodwork, not just supervision
+                                experience.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon">✅</div>
+                        <div class="why-text">
+                            <h4>Quality materials only</h4>
+                            <p>We source from trusted suppliers. No substandard sheets or cheap wood that warps in six
+                                months.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon">📅</div>
+                        <div class="why-text">
+                            <h4>Timeline you can hold us to</h4>
+                            <p>We quote a finish date and we meet it. If something changes, you hear from us first.</p>
+                        </div>
+                    </li>
+                    <li class="why-item">
+                        <div class="why-icon">💬</div>
+                        <div class="why-text">
+                            <h4>Direct communication</h4>
+                            <p>You deal with the same person from quote to handover. No passing you around.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="why-visual reveal from-right">
+                <img src="./img1.jpeg" alt="Roofer at work on a residential property" />
+                <div class="why-badge">
+                    <div class="why-badge-num">300+</div>
+                    <div class="why-badge-label">Projects delivered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="testimonials-head reveal">
+            <div class="section-label">What clients say</div>
+            <h2 class="section-title">Real people, real jobs</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-stars">
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                        class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="testimonial-quote">They finished my entire roof in four days. Neat work, no mess left behind,
+                    and the price they quoted was exactly what I paid. I've already referred them to my neighbour.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AO</div>
+                    <div>
+                        <div class="author-name">Akporkpokpor O.</div>
+                        <div class="author-location">Ughelli, Delta</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-stars">
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                        class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="testimonial-quote">I needed a dining table and six chairs for my new home. JoshP delivered
+                    something that looked better than the showroom options I was considering — and at half the cost.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AN</div>
+                    <div>
+                        <div class="author-name">Adaeze N.</div>
+                        <div class="author-location">Warri, Delta</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal reveal-delay-3">
+                <div class="testimonial-stars">
+                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                        class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="testimonial-quote">My old roof was leaking badly before every rainy season. They found the
+                    problem quickly, fixed it properly, and it held through the last two rains without a single drop
+                    inside.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MJ</div>
+                    <div>
+                        <div class="author-name">Mr John.</div>
+                        <div class="author-location">Ughelli, Delta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+        <div class="gallery-head reveal">
+            <div class="section-label">Our work</div>
+            <h2 class="section-title" style="max-width:100%; text-align:center;">Recent Projects</h2>
+            <p class="section-body" style="margin: 0 auto; text-align:center;">Replace these with your own project
+                photos.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item reveal reveal-delay-1">
+                <img src="./img1.jpeg" alt="Completed roofing project" />
+            </div>
+            <div class="gallery-item reveal reveal-delay-2">
+                <img src="./img2.jpeg" alt="Furniture carpentry work" />
+            </div>
+            <div class="gallery-item reveal reveal-delay-3">
+                <img src="./img3.jpeg" alt="Roof installation close-up" />
+            </div>
+            <div class="gallery-item reveal reveal-delay-4">
+                <img src="./img5.jpeg" alt="Custom wooden table" />
+            </div>
+            <div class="gallery-item reveal reveal-delay-3">
+                <img src="./img4.jpeg" alt="Interior carpentry" />
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="faq-wrap">
+            <div class="reveal from-left">
+                <div class="section-label">FAQ</div>
+                <h2 class="section-title">Questions we get all the time</h2>
+                <p class="section-body">If yours isn't here, just send us a message on WhatsApp and we'll answer within
+                    the hour.</p>
+                <a href="https://wa.me/2348132282385" class="btn-primary" target="_blank" rel="noopener"
+                    style="display:inline-block; margin-top:2rem;">
+                    Ask on WhatsApp →
+                </a>
+            </div>
+
+            <div class="faq-list reveal from-right">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does a full roof installation take?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            It depends on the size of the building. A standard 3-bedroom bungalow typically takes 3 to 5
+                            working days from start to finish. We give you a specific timeline when we visit the site.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you supply the roofing materials, or do I buy them?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            We can do either. Most clients prefer we handle procurement so there are no quality
+                            surprises — we source from trusted suppliers and include it in the quote. But if you already
+                            have materials, we work with what you have.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you offer any kind of warranty on your work?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes. We offer a workmanship warranty on all roofing installations. If there's a leak or
+                            issue directly caused by how we installed it, we come back and fix it at no extra charge.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can you work on an already-occupied house?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes, we do this regularly. We work in sections where possible to minimise disruption, and we
+                            make sure nothing is left exposed overnight. Your family's safety is part of the job plan.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I get a quote?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Call or WhatsApp us on +234 813 228 2385, or fill the contact form below. We'll schedule a
+                            free site visit within 48 hours and have a written quote ready for you after that.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="reveal from-left">
+                <div class="section-label">Contact</div>
+                <h2 class="section-title">Ready to start your project?</h2>
+                <p class="section-body">Reach out directly on WhatsApp or by phone; or drop a message below and we'll
+                    get back to you within 24 hours.</p>
+
+                <div class="contact-channels">
+                    <a href="https://wa.me/2348132282385" class="channel-btn" target="_blank" rel="noopener">
+                        <div class="channel-icon whatsapp">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#25d366"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                <path
+                                    d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.526 5.847L.057 23.998l6.304-1.649A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 01-5.034-1.378l-.36-.214-3.742.98.999-3.648-.235-.374A9.86 9.86 0 012.107 12C2.107 6.528 6.528 2.107 12 2.107c5.471 0 9.893 4.421 9.893 9.893 0 5.471-4.422 9.894-9.893 9.894z" />
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-label">WhatsApp</div>
+                            <div class="channel-value">+234 813 228 2385</div>
+                        </div>
+                        <div class="channel-arrow">→</div>
+                    </a>
+
+                    <a href="tel:+2348132282385" class="channel-btn">
+                        <div class="channel-icon phone">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07B00"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z" />
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <div class="channel-label">Call us</div>
+                            <div class="channel-value">+234 813 228 2385</div>
+                        </div>
+                        <div class="channel-arrow">→</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="reveal from-right">
+                <div class="form-group" style="margin-bottom:0.5rem;">
+                    <label>Your name</label>
+                    <input type="text" id="form-name" placeholder="Emeka Okafor" />
+                </div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input type="tel" id="form-phone" placeholder="+234 800 000 0000" />
+                    </div>
+                    <div class="form-group">
+                        <label>Service needed</label>
+                        <select id="form-service">
+                            <option value="">Select a service</option>
+                            <option>Roof installation</option>
+                            <option>Roof repair</option>
+                            <option>Custom furniture</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tell us about your project</label>
+                        <textarea id="form-msg"
+                            placeholder="Location, house size, materials you have in mind..."></textarea>
+                    </div>
+                    <button class="form-submit" onclick="sendToWhatsApp()">Send via WhatsApp →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="#hero" class="footer-logo">JoshP <span>Concept</span></a>
+        <p class="footer-copy">© 2025 JoshP Concept. All rights reserved.</p>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/2348132282385" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.526 5.847L.057 23.998l6.304-1.649A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 01-5.034-1.378l-.36-.214-3.742.98.999-3.648-.235-.374A9.86 9.86 0 012.107 12C2.107 6.528 6.528 2.107 12 2.107c5.471 0 9.893 4.421 9.893 9.893 0 5.471-4.422 9.894-9.893 9.894z" />
+        </svg>
+    </a>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        function sendToWhatsApp() {
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const service = document.getElementById('form-service').value;
+            const msg = document.getElementById('form-msg').value;
+            const text = encodeURIComponent(
+                'Hello JoshP Concept,\n\n' +
+                'Name: ' + (name || 'Not provided') + '\n' +
+                'Phone: ' + (phone || 'Not provided') + '\n' +
+                'Service: ' + (service || 'Not provided') + '\n\n' +
+                (msg || '')
+            );
+            window.open('https://wa.me/2348132282385?text=' + text, '_blank');
+        }
+    </script>
+</body>
+
+</html>
